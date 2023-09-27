@@ -77,7 +77,7 @@ class PostController extends Controller
      * @param  mixed $id
      * @return View
      */
-    public function show(string $id): View
+    public function show($id): View
     {
         //get post by ID
         $post = Post::findOrFail($id);
@@ -92,7 +92,7 @@ class PostController extends Controller
      * @param  mixed $id
      * @return void
      */
-    public function edit(string $id): View
+    public function edit($id): View
     {
         //get post by ID
         $post = Post::findOrFail($id);
@@ -156,10 +156,10 @@ class PostController extends Controller
      * @param  mixed $post
      * @return void
      */
-    public function destroy($post): RedirectResponse
+    public function destroy($id): RedirectResponse
     {
         //get post by ID
-        $post = Post::findOrFail();
+        $post = Post::findOrFail($id);
 
         //delete image
         Storage::delete('public/posts/'. $post->image);
